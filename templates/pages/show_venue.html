@@ -73,9 +73,27 @@
 		</div>
 		{% endfor %}
 	</div>
+
 </section>
 
 <a href="/venues/{{ venue.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+<button class="btn btn-danger btn-lg" data-id="{{venue.id}}" onclick="deleteVenue(event)">Delete</button>
 
+<script>
+   // using fetch api to communicate with delete endpoint
+	const deleteVenue = (e) =>{
+		if(window.confirm("Are you sure you want to Delete this venue this action can't be undone")){
+			const id = e.target.dataset.id;
+			url=`/venues/${id}`
+			redUrl=`/`
+			fetch(url,{
+			method:"DELETE"
+			}).then(()=>window.location.href = redUrl).catch(err=>console.log(error))
+		}
+		
+	  }
+  
+  </script> 
 {% endblock %}
+
 
