@@ -84,7 +84,7 @@ class VenueForm(Form):
     )
     phone = StringField(
         'phone',
-        validators=[DataRequired()]
+        validators=[DataRequired(),Regexp(regex=r'^\d+$', message="Phone number should only contain digits")]
     )
     image_link = StringField(
         'image_link'
@@ -193,7 +193,7 @@ class ArtistForm(Form):
     )
     phone = StringField(
         'phone',
-        validators=[DataRequired()]
+        validators=[DataRequired(),Regexp(regex=r'^\d+$', message="Phone number should only contain digits")]
     )
     image_link = StringField(
         'image_link'
@@ -235,4 +235,3 @@ class ArtistForm(Form):
     seeking_description = StringField(
             'seeking_description'
      )
-
